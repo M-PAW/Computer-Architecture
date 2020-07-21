@@ -2,13 +2,37 @@
 
 import sys
 
+LDI  = 0b10000010
+HLT  = 1
+PRN  = 0b01000111
+MUL  = 0b10100010
+PUSH = 0b01000101
+POP  = 0b01000110
+CALL = 0b01010000
+ADD  = 0b10100000
+RET  = 0b00010001
+
+#CMP
+
+CMP = 0b10100111
+JMP = 0b01010100
+JEQ = 0b01010101
+JNE = 0b01010110
+
+SP = 7
 class CPU:
     """Main CPU class."""
 
     def __init__(self):
         """Construct a new CPU."""
+        # Add ram, reg, and pc
         self.ram = [0] * 256
         self.reg = [0] * 8
+        self.pc 
+        self.reg[SP]
+
+        self.fl = 0
+        
 
     def load(self):
         """Load a program into memory."""
@@ -64,10 +88,22 @@ class CPU:
     def run(self):
         """Run the CPU."""
         pass
+        # create bool sentinel for cpu, turn on
+        cpu_on = True
+        # utilize a while loop
+        while cpu_on:
+        # capture the command
+            command = self.ram[self.pc]
+            # set the value of a register to an integer.
+            if command == LDI:
+                operand_a = self.ram_read(self.pc+1)
+                operand_b = self.ram_read(self.pc+2)
+                self.reg[self.ram[operand_a] = self.ram[operand_b]
+                self.pc += 3
 
 
     ## RAM Methods _________
-    
+
     def ram_read(self, mar):
         return self.ram[reg]
 
